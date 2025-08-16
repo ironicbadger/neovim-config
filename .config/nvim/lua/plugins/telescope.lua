@@ -4,8 +4,17 @@ return {
   },
   {
     "nvim-telescope/telescope.nvim",
-    tag = "0.1.5",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    dependencies = { 
+      "nvim-lua/plenary.nvim",
+      "zane-/cder.nvim",
+    },
+    keys = {
+      {
+        "<leader>tc",
+        ":Telescope cder<cr>",
+        desc = "Change Working Directory",
+      },
+    },
     config = function()
       require("telescope").setup({
         extensions = {
@@ -22,4 +31,10 @@ return {
       require("telescope").load_extension("ui-select")
     end,
   },
+  {
+    "zane-/cder.nvim",
+    config = function()
+      require('telescope').load_extension('cder')
+    end
+  }
 }
