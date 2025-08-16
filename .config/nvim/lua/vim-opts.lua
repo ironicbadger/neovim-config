@@ -1,7 +1,3 @@
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
-vim.g.background = "light"
-
 vim.opt.swapfile = false
 
 vim.cmd("set expandtab")
