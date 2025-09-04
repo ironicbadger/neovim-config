@@ -17,6 +17,18 @@ return {
     },
     config = function()
       require("telescope").setup({
+        defaults = {
+          -- Fix cursor jump when Neo-tree is open
+          get_selection_window = function()
+            for _, win in ipairs(vim.api.nvim_list_wins()) do
+              local buf = vim.api.nvim_win_get_buf(win)
+              if vim.api.nvim_buf_get_option(buf, "filetype") ~= "neo-tree" then
+                return win
+              end
+            end
+            return 0
+          end
+        },
         extensions = {
           ["ui-select"] = {
             require("telescope.themes").get_dropdown({}),
