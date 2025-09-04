@@ -25,7 +25,8 @@ return {
       })
       local builtin = require("telescope.builtin")
       vim.keymap.set("n", "<C-p>", builtin.find_files, {})
-      vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
+      vim.keymap.set("n", "<leader>ff", function() builtin.find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }}) end, {})
+      vim.keymap.set("n", "<leader>fg", function() builtin.live_grep({ vimgrep_arguments = {'rg', '--color=never', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case', '--hidden', '-g', '!.git'} }) end, {})
       vim.keymap.set("n", "<leader><leader>", builtin.oldfiles, {})
 
       require("telescope").load_extension("ui-select")
